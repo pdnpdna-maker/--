@@ -1,253 +1,206 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>لأجمل جود 🤍</title>
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: #ffe6f0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        overflow: hidden;
-        perspective: 1000px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مفاجأة لجودي 💖</title>
+    <style>
+        body {
+            background-color: #ffe6f2;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
 
-    .container {
-        width: 90%;
-        max-width: 400px;
-        background: rgba(255, 255, 255, 0.9);
-        border: 3px solid #ffb3d1;
-        border-radius: 30px;
-        box-shadow: 0 10px 30px rgba(255, 179, 209, 0.4);
-        padding: 25px;
-        text-align: center;
-        position: relative;
-        z-index: 10;
-        min-height: 400px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+        /* تأثير القلوب المتحركة في الخلفية */
+        .heart-fall {
+            position: absolute;
+            color: #ff66a3;
+            font-size: 20px;
+            animation: fall linear infinite;
+            z-index: 1;
+        }
 
-    .page {
-        display: none;
-        width: 100%;
-        animation: fadeIn 0.5s ease-in-out forwards;
-    }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
 
-    .page.active {
-        display: block;
-    }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 25px rgba(255, 102, 163, 0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            border: 4px solid #ffb3d9;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
 
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
+        h1 {
+            color: #ff3385;
+            font-size: 24px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
 
-    .kitty-img {
-        width: 150px;
-        height: 150px;
-        object-fit: contain;
-        border-radius: 20px;
-        margin-bottom: 20px;
-    }
+        .kitty-img {
+            width: 180px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 15px;
+        }
 
-    .question-box {
-        background: #000000;
-        color: #ffffff;
-        padding: 12px 20px;
-        border-radius: 15px;
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 25px;
-        display: inline-block;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        border: 2px solid #ff4f8a;
-    }
+        .btn {
+            background-color: #ff66a3;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(255, 102, 163, 0.4);
+            transition: transform 0.2s, background-color 0.2s;
+        }
 
-    .btn {
-        background: #ff66a3;
-        color: white;
-        border: none;
-        padding: 12px 30px;
-        border-radius: 25px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 15px rgba(255, 102, 163, 0.4);
-        margin: 5px;
-        font-weight: bold;
-        display: inline-block;
-        min-width: 120px;
-    }
+        .btn:hover {
+            background-color: #ff3385;
+            transform: scale(1.05);
+        }
 
-    .btn:hover {
-        background: #ff4f8a;
-        transform: scale(1.05);
-    }
+        /* تصميم وتأثير القلب الوردي النابض */
+        .pink-heart {
+            font-size: 90px;
+            color: #ff66b3;
+            cursor: pointer;
+            display: inline-block;
+            margin: 20px 0;
+            user-select: none;
+            animation: pulse 0.8s infinite alternate ease-in-out;
+            filter: drop-shadow(0 5px 10px rgba(255, 102, 179, 0.4));
+            transition: transform 0.1s;
+        }
 
-    .btn-secondary {
-        background: #ff99c2;
-    }
+        .pink-heart:active {
+            transform: scale(0.9);
+        }
 
-    /* صفحة الموسيقى والرسالة */
-    .message-text {
-        text-align: right;
-        font-size: 15px;
-        line-height: 1.8;
-        color: #444;
-        max-height: 250px;
-        overflow-y: auto;
-        padding-left: 5px;
-        white-space: pre-line;
-    }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.25); }
+        }
 
-    /* قلوب طائرة بالخلفية */
-    .heart-bg {
-        position: absolute;
-        color: #ff4f8a;
-        font-size: 20px;
-        pointer-events: none;
-        animation: floatUp 5s linear infinite;
-        opacity: 0.7;
-    }
+        /* هيلو كيتوات كثيرة في الصفحة الأخيرة */
+        .kitty-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
 
-    @keyframes floatUp {
-        0% { transform: translateY(105vh) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
-    }
+        .kitty-group img {
+            width: 80px;
+            height: auto;
+            animation: bounce 1.5s infinite alternate;
+        }
 
-    iframe {
-        display: none; /* لتشغيل الأغنية بالخلفية تلقائياً وبدون ما تشوه التصميم */
-    }
-</style>
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+    </style>
 </head>
 <body>
 
-<div class="container">
+    <div class="container" id="card">
+        <!-- الصفحة الأولى -->
+        <div id="step1">
+            <img class="kitty-img" src="https://i.pinimg.com/originals/9e/dc/af/9edcafdfbf92d8816c148cf49c4f1c1a.gif" alt="فرحانة">
+            <h1>حيييييوووو جوديي 💕🌟</h1>
+            <button class="btn" onclick="nextStep(2)">يحيييك وسيمي</button>
+        </div>
 
-    <!-- الصفحة 1: الترحيب -->
-    <div class="page active" id="page1">
-        <!-- صورة هيلو كيتي ترحب وتغمز -->
-        <img class="kitty-img" src="https://i.pinimg.com/originals/b7/6f/9d/b76f9d3bdfd54109fe1c7f96b997e3a2.gif" alt="Hello Kitty">
-        <div class="question-box">جود عندي سؤال الجججج 🤍</div>
-        <div>
-            <button class="btn" onclick="nextPage(2)">شنو هو؟</button>
+        <!-- الصفحة الثانية -->
+        <div id="step2" style="display: none;">
+            <img class="kitty-img" src="https://i.pinimg.com/originals/db/c1/86/dbc1867c29571be94017696c21e64627.gif" alt="معصبة">
+            <h1>في شىء بس مستحي اقوله.. </h1>
+            <button class="btn" onclick="nextStep(3)">ييووه من متى نستحي من بعض</button>
+        </div>
+
+        <!-- الصفحة الثالثة -->
+        <div id="step3" style="display: none;">
+            <img class="kitty-img" src="https://i.pinimg.com/originals/44/a5/b3/44a5b3a4a62df860fc798604ee22cf81.gif" alt="مستغربة">
+            <h1>تحبين وسيييم!!!! 🤔</h1>
+            <button class="btn" onclick="nextStep(4)">هااا😨</button>
+        </div>
+
+        <!-- الصفحة الرابعة -->
+        <div id="step4" style="display: none;">
+            <img class="kitty-img" src="https://i.pinimg.com/originals/60/76/f3/6076f3f0bc17be7163c9b74051a8d05e.gif" alt="معصبة تسأل">
+            <h1>تحببين وسيم لو لا!!! 😡😕</h1>
+            <button class="btn" onclick="nextStep(5)">اكيييددد</button>
+        </div>
+
+        <!-- الصفحة الخامسة (صفحة القلب الوردي النباض الجديدة) -->
+        <div id="step5" style="display: none;">
+            <img class="kitty-img" src="https://i.pinimg.com/originals/30/8e/3c/308e3caa02a5e55e34789bbd8b066060.gif" alt="انتظار">
+            <h1>لو تحبين وسيم اضغطي على القلب 😉💗</h1>
+            <!-- قلب وردي نابض وتفاعلي عند الضغط -->
+            <div class="pink-heart" onclick="nextStep(6)">💖</div>
+        </div>
+
+        <!-- الصفحة السادسة والأخيرة -->
+        <div id="step6" style="display: none;">
+            <img class="kitty-img" src="https://i.pinimg.com/originals/9d/9e/19/9d9e1966952861c8903cc37b6058e132.gif" alt="مستحية">
+            <h1>أدري والله! يخليكم لبعض يا رب 💖🥺</h1>
+            
+            <!-- مجموعة هيلو كيتوات ماسكات قلوب -->
+            <div class="kitty-group">
+                <img src="https://i.pinimg.com/originals/80/cb/c2/80cbc24354c0df2ca972b21cf5bf0137.gif" alt="kitty1">
+                <img src="https://i.pinimg.com/originals/aa/06/66/aa066607068b556b46ef496924d5b248.gif" alt="kitty2">
+                <img src="https://i.pinimg.com/originals/30/8e/3c/308e3caa02a5e55e34789bbd8b066060.gif" alt="kitty3">
+            </div>
         </div>
     </div>
 
-    <!-- الصفحة 2: السؤال الأول -->
-    <div class="page" id="page2">
-        <!-- صورة هيلو كيتي خجلانة -->
-        <img class="kitty-img" src="https://i.pinimg.com/originals/cf/df/b5/cfdfb512c0fc443b740570b6d9da496e.gif" alt="Hello Kitty Shying">
-        <div class="question-box">بس سؤال اسالك اياه </div>
-        <div>
-            <button class="btn" onclick="nextPage(3)"> لبييه ياقلبي اسألينيي</button>
-        </div>
-    </div>
+    <script>
+        // دالة التنقل بين الخطوات
+        function nextStep(step) {
+            // إخفاء كل الصفحات
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'none';
+            document.getElementById('step3').style.display = 'none';
+            document.getElementById('step4').style.display = 'none';
+            document.getElementById('step5').style.display = 'none';
+            document.getElementById('step6').style.display = 'none';
 
-    <!-- الصفحة 3: السؤال التفاعلي الحاسم -->
-    <div class="page" id="page3">
-        <!-- هيلو كيتي تترقب -->
-        <img class="kitty-img" src="https://i.pinimg.com/originals/14/b4/2c/14b42cd8952b7a4f9640989bf59d2f34.gif" alt="Hello Kitty Love">
-        <div class="question-box">تحبين وسيم لو لااا؟ 🧐</div>
-        <div>
-            <button class="btn" onclick="nextPage(4)">ها؟ 😳</button>
-            <button class="btn btn-secondary" onclick="nextPage(4)">مدري 🫣</button>
-        </div>
-    </div>
+            // إظهار الصفحة المطلوبة
+            document.getElementById('step' + step).style.display = 'block';
+        }
 
-    <!-- الصفحة 4: التأكيد والقلب -->
-    <div class="page" id="page4">
-        <img class="kitty-img" src="https://i.pinimg.com/originals/b5/a2/22/b5a2223a9d90ec6060f64be87d8df981.gif" alt="Hello Kitty Heart">
-        <div class="question-box">اذا تحبين وسيم دوسي على القلب 💖</div>
-        <div>
-            <button class="btn" style="font-size: 24px; padding: 10px 20px;" onclick="startMusicAndShowMessage()">❤️</button>
-        </div>
-    </div>
-
-    <!-- الصفحة 5: الأغنية والرسالة النهائية الكبيرة -->
-    <div class="page" id="page5">
-        <div class="question-box" style="margin-bottom: 15px;">من وسيم إلى جودي 🤍</div>
-        <div class="message-text">
-حيو جودي، والله منوّرة يا قلبي. 🤍
-
-المهم، حبيت أسوي لك هدية بسيطة، بمناسبة إني أبي أفرحك. أحب أشوفك مبسوطة، وأحب أشوفك أصلًا يعني.
-
-والله يسعدك يا قلبي، قسم بالله ما تعرفين قد إيش أحبك. أحب سواليفك، وأحب ضحكتك، وأحب تصويرك لي في كل لحظاتك وأوقاتك.
-
-والله صدق، والله العظيم، إنه ما فيه أسعد مني يوم أكلمك، ولا فيه أسعد مني يوم أشوفك.
-
-وأدري إن الهدية بسيطة، لكنها من قلبي، وأتمنى إنها ترسم لك ابتسامة.
-
-أحبك يا جود. 🤍❣️
-        </div>
-    </div>
-
-</div>
-
-<!-- مشغل يوتيوب بالخلفية مخفي لتشغيل أغنية "بوسة لروحك" تلقائياً -->
-<div id="player"></div>
-
-<script>
-    // التنقل بين الصفحات
-    function nextPage(pageNum) {
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
-        });
-        document.getElementById('page' + pageNum).classList.add('active');
-    }
-
-    // تشغيل الأغنية عند الوصول للصفحة الأخيرة وعرض الرسالة
-    function startMusicAndShowMessage() {
-        nextPage(5);
-        
-        // تشغيل الموسيقى عبر كود يوتيوب بالخلفية
-        player.playVideo();
-    }
-
-    // تجهيز مشغل اليوتيوب المخفي
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    var player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player('player', {
-            height: '0',
-            width: '0',
-            videoId: 'PSKuBLuWG4s', // كود أغنيتك "بوسة لروحك"
-            playerVars: {
-                'autoplay': 0,
-                'loop': 1,
-                'playlist': 'PSKuBLuWG4s'
+        // إنشاء تأثير القلوب المتساقطة بالخلفية
+        function createHearts() {
+            const body = document.body;
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart-fall');
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                body.appendChild(heart);
             }
-        });
-    }
-
-    // خلفية القلوب المتطايرة اللطيفة
-    setInterval(() => {
-        const heart = document.createElement('div');
-        heart.className = 'heart-bg';
-        heart.innerHTML = ['💖', '💝', '💗', '🤍', '🌸'][Math.floor(Math.random() * 5)];
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
-        document.body.appendChild(heart);
-        
-        setTimeout(() => {
-            heart.remove();
-        }, 5000);
-    }, 300);
-</script>
-
+        }
+        createHearts();
+    </script>
 </body>
 </html>
